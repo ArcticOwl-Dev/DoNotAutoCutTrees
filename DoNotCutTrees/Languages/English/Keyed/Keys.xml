@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<DoNotAutoCutTrees>DoNotAutoCutTrees</DoNotAutoCutTrees>
+	<SettingLabel>Select under which conditions your colonist won't automatic cut trees in growing zones, building structures and roofing</SettingLabel>
+	<SettingIdeoPlayerFaction>Colonists with the ideo percept 'treeCutting' in your faction</SettingIdeoPlayerFaction>
+	<SettingIdeoPlayerFactionDesc>When this setting is activated and you have a colonist (also Slave) with a ideo which prohibits tree cutting, all colonist won't automatic cut trees</SettingIdeoPlayerFactionDesc>
+	<SettingIdeoGuest>Guest colonists with the ideo percept 'treeCutting'</SettingIdeoGuest>
+	<SettingIdeoGuestDesc>When this setting is activated and you have a guest colonist (from quests) with a ideo which prohibits tree cutting, all colonist won't automatic cut trees</SettingIdeoGuestDesc>
+	<SettingIdeoPrisoner>Prisoners with the ideo percept 'treeCutting'</SettingIdeoPrisoner>
+	<SettingIdeoPrisonerDesc>When this setting is activated and you have a prisoner with a ideo which prohibits tree cutting, all colonist won't automatic cut trees</SettingIdeoPrisonerDesc>
+	<SettingGeneral>Always deactivate automatic tree cutting</SettingGeneral>
+	<SettingGeneralDesc>When this setting is activated all colonist won't automatic cut trees in growing zones, building structures and roofing</SettingGeneralDesc>
+</LanguageData>
