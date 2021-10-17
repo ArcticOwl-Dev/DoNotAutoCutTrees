@@ -7,15 +7,15 @@
     <ProjectGuid>{3A5E4A1B-EE0F-4CB8-9E20-D5DED8898774}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DoNotCutTrees</RootNamespace>
-    <AssemblyName>DoNotCutTrees</AssemblyName>
+    <RootNamespace>DoNotAutoCutTrees</RootNamespace>
+    <AssemblyName>DoNotAutoCutTrees</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Timestamp>$([System.DateTime]::Now.ToString("yyyy-MM-dd_HH:mm"))</Timestamp>
+    <!--<Timestamp>$([System.DateTime]::Now.ToString("yyyy-MM-dd_HH:mm"))</Timestamp> -->
     <!-- RimWorldFolder - Example C:\RimWorld\RimworldWin64.exe then write: C:\RimWorld\    the Backslash at the end is Important!-->
     <RimWorldFolder>C:\GOG Games\RimWorld.1.3.3117\</RimWorldFolder>
   </PropertyGroup>
@@ -25,6 +25,7 @@
 		Activate Debug when Configuration == Debug
 	-->
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug'">
+    <Timestamp>$([System.DateTime]::Now.ToString("yyyy-MM-dd_HH:mm"))</Timestamp>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
@@ -34,7 +35,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
     <Optimize>true</Optimize>
-    <ThisModFolder>$(RimWorldFolder)Mods\$(SolutionName)-Release\</ThisModFolder>
+    <ThisModFolder>$(RimWorldFolder)Mods\$(SolutionName)\</ThisModFolder>
     <FilesAboutChange>About\About-Release.xml</FilesAboutChange>
   </PropertyGroup>
   <!-- 
@@ -102,17 +103,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\**\*.cs" />
   </ItemGroup>
-	
   <!-- 
 	
 		DefineFilesToCopy
 	 -->
   <ItemGroup>
-    <None Include="About\About-Debug.xml;About\About-Release.xml" />
+    <FilesAboutXML Include="About\About-Debug.xml;About\About-Release.xml" />
+    <FilesAbout Include="About\Preview.png" />
     <FilesLanguages Include="Languages\**" />
     <FilesPatches Include="Patch\**" />
-    <FilesTextures Include="Textures\**" Exclude="Textures\debug.png" />
-	<FilesTexturesDebug Include="Textures\debug.png" />
+    <FilesTextures Include="Textures\**" Exclude="Textures\debug.png;Textures\*.svg" />
+    <FilesTexturesDebug Include="Textures\debug.png" />
     <FilesDefs Include="Def\**" />
     <FilesSounds Include="Sounds\**" />
   </ItemGroup>
@@ -137,6 +138,7 @@
 		Copy all Files in OutputFolder and Rename About.xml Target
 	 -->
   <Target Name="CopyFiles" AfterTargets="CoreCompile">
+    <Message Text="Configuration is $(Configuration)" Importance="High" />
     <Message Text="Rename $(FilesAboutChange) to About.xml and move to output folder" Importance="High" />
     <Copy SourceFiles="$(FilesAboutChange)" DestinationFiles="$(OutputAboutFolder)About.xml" SkipUnchangedFiles="true" />
     <Message Text="Copy none compile files to target directory" Importance="High" />
@@ -145,11 +147,14 @@
     <Copy SourceFiles="@(FilesLanguages)" DestinationFolder="$(OutputLanguageFolder)%(RecursiveDir)" SkipUnchangedFiles="true" />
     <Copy SourceFiles="@(FilesPatches)" DestinationFolder="$(OutputPatchFolder)%(RecursiveDir)" SkipUnchangedFiles="true" />
     <Copy SourceFiles="@(FilesTextures)" DestinationFolder="$(OutputTextureFolder)%(RecursiveDir)" SkipUnchangedFiles="true" />
-	<Copy SourceFiles="@(FilesTexturesDebug)" DestinationFolder="$(OutputTextureFolder)" SkipUnchangedFiles="true" Condition ="'$(Configuration)' == 'Debug'"/>
+    <Copy SourceFiles="@(FilesTexturesDebug)" DestinationFolder="$(OutputTextureFolder)" SkipUnchangedFiles="true" Condition="'$(Configuration)' == 'Debug'" />
     <Copy SourceFiles="@(FilesSounds)" DestinationFolder="$(OutputSoundFolder)%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
   <Target Name="AboutXMLTimestamp" AfterTargets="CopyFiles">
-    <WriteLinesToFile File="$(OutputAboutFolder)About.xml" Lines="$([System.IO.File]::ReadAllText($(OutputAboutFolder)About.xml).Replace('EXAMPLETIMESTAMP',$(Timestamp)))" Overwrite="true" />
-    <Message Text="$(Timestamp)" Importance="High" />
+    <PropertyGroup>
+      <CurrentDate>$([System.DateTime]::Now.ToString("HH:mm_dd.MM.yy"))</CurrentDate>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(OutputAboutFolder)About.xml" Lines="$([System.IO.File]::ReadAllText($(OutputAboutFolder)About.xml).Replace('EXAMPLETIMESTAMP',$(CurrentDate)))" Overwrite="true" />
+    <Message Text="TIMESTAMP: $(CurrentDate)" Importance="High" />
   </Target>
 </Project>

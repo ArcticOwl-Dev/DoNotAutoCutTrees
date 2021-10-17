@@ -26,6 +26,7 @@ namespace DoNotAutoCutTrees
             this.settings = GetSettings<DoNotAutoCutTrees.Settings>();
         }
 
+
         /// <summary>
         /// A reference to our settings.
         /// </summary>
@@ -50,5 +51,6 @@ namespace DoNotAutoCutTrees
         {
             return "DoNotAutoCutTrees".Translate();
         }
+
     }
 }

@@ -14,20 +14,31 @@ namespace DoNotAutoCutTrees
         /// <summary>
         /// Declare the settings of the mod
         /// </summary>
+
+        public bool ShowQuickSettingButton = true;
+
         public bool DoNotAutoCutTreesGeneral = false;
-        public bool DoNotAutoCutTreesIdeoPlayerFaction = true;
-        public bool DoNotAutoCutTreesIdeoGuest = true;
-        public bool DoNotAutoCutTreesIdeoPrisoner = false;
+        public bool DoNotAutoCutTreesIdeoManualPawnList = false;
+ 
+        public bool DoNotAutoCutTreesIdeoIsColonist = true;
+        public bool DoNotAutoCutTreesIdeoIsSlave = true;
+        public bool DoNotAutoCutTreesIdeoIsGuest = true;
+        public bool DoNotAutoCutTreesIdeoIsPrisoner = true;
  
         /// <summary>
         /// The part that writes our settings to file. Note that saving is by ref.
         /// </summary>
         public override void ExposeData()
         {
+            Scribe_Values.Look(ref ShowQuickSettingButton, "ShowQuickSettingButton");
+
             Scribe_Values.Look(ref DoNotAutoCutTreesGeneral, "DoNotAutoCutTreesGeneral");
-            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoPlayerFaction, "DoNotAutoCutTreesIdeoPlayerfaction");
-            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoGuest, "DoNotAutoCutTreeIdeoGuest");
-            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoPrisoner, "DoNotAutoCutTreeIdeoPrisoner");
+            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoManualPawnList, "DoNotAutoCutTreesIdeoManuellList");
+
+            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoIsColonist, "DoNotAutoCutTreesIdeoIsColonist");
+            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoIsSlave, "DoNotAutoCutTreesIdeoIsSlave");
+            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoIsGuest, "DoNotAutoCutTreeIdeoIsGuest");
+            Scribe_Values.Look(ref DoNotAutoCutTreesIdeoIsPrisoner, "DoNotAutoCutTreeIdeoIsPrisoner");
             base.ExposeData();
         }
 
@@ -48,10 +59,23 @@ namespace DoNotAutoCutTrees
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
             listingStandard.Label("SettingLabel".Translate());
-            listingStandard.CheckboxLabeled("SettingIdeoPlayerFaction".Translate(), ref DoNotAutoCutTreesIdeoPlayerFaction, "SettingIdeoPlayerFactionDesc".Translate());
-            listingStandard.CheckboxLabeled("SettingIdeoGuest".Translate(), ref DoNotAutoCutTreesIdeoGuest, "SettingIdeoGuestDesc".Translate());
-            listingStandard.CheckboxLabeled("SettingIdeoPrisoner".Translate(), ref DoNotAutoCutTreesIdeoPrisoner, "SettingIdeoPrisonerDesc".Translate());
+            listingStandard.CheckboxLabeled("SettingIdeoIsColonist".Translate(), ref DoNotAutoCutTreesIdeoIsColonist, "SettingIdeoIsColonistDesc".Translate());
+            listingStandard.CheckboxLabeled("SettingIdeoIsSlave".Translate(), ref DoNotAutoCutTreesIdeoIsSlave, "SettingIdeoIsSlave".Translate());
+            listingStandard.CheckboxLabeled("SettingIdeoIsGuest".Translate(), ref DoNotAutoCutTreesIdeoIsGuest, "SettingIdeoIsGuestDesc".Translate());
+            listingStandard.CheckboxLabeled("SettingIdeoIsPrisoner".Translate(), ref DoNotAutoCutTreesIdeoIsPrisoner, "SettingIdeoIsPrisonerDesc".Translate());
+            listingStandard.CheckboxLabeled("SettingManualPawnList".Translate(), ref DoNotAutoCutTreesIdeoManualPawnList, "SettingManualPawnListDesc".Translate());
+            if(Current.ProgramState == ProgramState.Playing && DoNotAutoCutTreesIdeoManualPawnList)
+            {
+                listingStandard.Gap();
+                listingStandard.Label("ManualPawnList".Translate() + ": " + GetManualPawnList.GetGameComponentManualPawnList(Current.Game).ToString());
+                if (!GetManualPawnList.GetGameComponentManualPawnList(Current.Game).IsEmpty() && listingStandard.ButtonText("ManualPawnListClear".Translate()))
+                {
+                    GetManualPawnList.GetGameComponentManualPawnList(Current.Game).Clear();
+                }
+            }
+            listingStandard.Gap();
             listingStandard.CheckboxLabeled("SettingGeneral".Translate(), ref DoNotAutoCutTreesGeneral, "SettingGeneralDesc".Translate());
+            listingStandard.CheckboxLabeled("ShowQuickSettingButton".Translate(), ref ShowQuickSettingButton, "ShowQuickSettingButtonDesc".Translate());
             listingStandard.End();
         }
 

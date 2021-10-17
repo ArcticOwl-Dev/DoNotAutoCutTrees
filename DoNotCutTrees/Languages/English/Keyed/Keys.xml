@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 	<DoNotAutoCutTrees>DoNotAutoCutTrees</DoNotAutoCutTrees>
-	<SettingLabel>Select under which conditions your colonist won't automatic cut trees in growing zones, building structures and roofing</SettingLabel>
-	<SettingIdeoPlayerFaction>Colonists with the ideo percept 'treeCutting' in your faction</SettingIdeoPlayerFaction>
-	<SettingIdeoPlayerFactionDesc>When this setting is activated and you have a colonist (also Slave) with a ideo which prohibits tree cutting, all colonist won't automatic cut trees</SettingIdeoPlayerFactionDesc>
-	<SettingIdeoGuest>Guest colonists with the ideo percept 'treeCutting'</SettingIdeoGuest>
-	<SettingIdeoGuestDesc>When this setting is activated and you have a guest colonist (from quests) with a ideo which prohibits tree cutting, all colonist won't automatic cut trees</SettingIdeoGuestDesc>
-	<SettingIdeoPrisoner>Prisoners with the ideo percept 'treeCutting'</SettingIdeoPrisoner>
-	<SettingIdeoPrisonerDesc>When this setting is activated and you have a prisoner with a ideo which prohibits tree cutting, all colonist won't automatic cut trees</SettingIdeoPrisonerDesc>
-	<SettingGeneral>Always deactivate automatic tree cutting</SettingGeneral>
-	<SettingGeneralDesc>When this setting is activated all colonist won't automatic cut trees in growing zones, building structures and roofing</SettingGeneralDesc>
+	<SettingLabel>Select the groups of pawns, which should be supervised. If any of this pawns get a mood debuff from there ideo by cutting trees, all pawns won't automatically cut trees in growing zones and by building structures and roofing</SettingLabel>
+	<SettingIdeoIsColonist>Colonists</SettingIdeoIsColonist>
+	<SettingIdeoIsColonistDesc>Do not cut trees if any colonist get a mood debuff from cutting trees</SettingIdeoIsColonistDesc>
+	<SettingIdeoIsSlave>Slaves</SettingIdeoIsSlave>
+	<SettingIdeoIsSlaveDesc>Do not cut trees if any slave get a mood debuff from cutting trees</SettingIdeoIsSlaveDesc>
+	<SettingIdeoIsGuest>Guests</SettingIdeoIsGuest>
+	<SettingIdeoIsGuestDesc>Colonist, which joins your colony temporary by a quest</SettingIdeoIsGuestDesc>
+	<SettingIdeoIsPrisoner>Prisoners</SettingIdeoIsPrisoner>
+	<SettingIdeoIsPrisonerDesc>Do not cut trees if any prisoner get a mood debuff from cutting trees</SettingIdeoIsPrisonerDesc>
+	<SettingManualPawnListShort>ManualList</SettingManualPawnListShort>
+	<SettingManualPawnList>Manual Pawn List</SettingManualPawnList>
+	<SettingManualPawnListDesc>This setting adds a GIZMO button to every pawn with a ideo with a mood debuff by cutting trees. This setting only expands the other settings. For complete manual control deactivate the above settings.(IsColonist, IsSlave, IsGuest and IsPrisoner)</SettingManualPawnListDesc>
+	<SettingGeneralShort>General</SettingGeneralShort>
+	<SettingGeneral>Always deactivate automatically tree cutting for all pawns</SettingGeneral>
+	<SettingGeneralDesc>When this setting is activated all colonist won't automatically cut trees in growing zones, building structures and roofing (no matter their ideo)</SettingGeneralDesc>
+	<ShowQuickSettingButton>Show quick setting button</ShowQuickSettingButton>
+	<ShowQuickSettingButtonDesc>Adds a button in the right bottom corner. The button opens a float menu to quickly change the settings</ShowQuickSettingButtonDesc>
+	<ManualPawnListGizmoLabel>Don't auto cut trees</ManualPawnListGizmoLabel>
+	<ManualPawnListGizmoDesc>This setting only expands the other settings. For complete manual control deactivate the other settings.(IsColonist, IsSlave, IsGuest, IsPrisoner)</ManualPawnListGizmoDesc>
+	<ManualPawnList>Manual Pawn List</ManualPawnList>
+	<ManualPawnListClear>Clear Manual Pawn List</ManualPawnListClear>
 </LanguageData>

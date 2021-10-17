@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>DoNotCutTrees - Dev Build</name>
-	<author>author name</author>
+	<author>AllenCaine</author>
 	<supportedVersions>
-		<li>1.0</li>
-		<li>1.1</li>
-		<li>1.2</li>
 		<li>1.3</li>
 	</supportedVersions>
-	<packageId>packageID.Dev</packageId>
+	<packageId>AllenCaine.DoNotAutoCutTrees.Dev</packageId>
 	<description>
-		BUILDTIME: EXAMPLETIMESTAMP
-		Description of Dev Build
-		Example Mod
+BUILDTIME: EXAMPLETIMESTAMP
+This mod gives you the option to disable the automatic cutting of trees.
+
+In the game pawns automatically cut trees
+- in growing zones
+- under building structure blueprints
+- when roofing a area
+
+Especially with the ideology precepts of 'Tree Cutting' and 'Tree' this is very annoying, because pawns get a mood debuff from it.
+
+In this mod, you have four Settings to disable the automatic cutting of trees:
+1. Colonist   - When one of your colonists gets a mood debuff from cutting trees, nobody will automatically cut trees.
+2. Slaves     - When one of your Slaves gets a mood debuff from cutting trees, nobody will automatically cut trees.
+3. Guest      - When one of your guest (temporary Colonist from quests) gets a mood debuff from cutting trees, nobody will automatically cut trees.
+4. Prisoner   - When one of your prisoner gets a mood debuff from cutting trees, nobody will automatically cut trees.
+5. ManualList - All pawns with a mood debuff from cutting trees, get a extra Gizmo toggle button to disable automatically cutting of trees for all pawns.
+4. General    - When this setting is activated, all automatic cutting of trees is disabled (when someone wants more micromanagement)
+
+More Infos: https://github.com/AllenCaine/DoNotAutoCutTreesral 
+
 	</description>
-	<url></url>
+	<url>https://github.com/AllenCaine/DoNotAutoCutTreesral </url>
 	<modDependencies>
-		<!--
 		<li>
 			<packageId>brrainz.harmony</packageId>
 			<displayName>Harmony</displayName>
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
 		</li>
-		-->
 	</modDependencies>
 </ModMetaData>
