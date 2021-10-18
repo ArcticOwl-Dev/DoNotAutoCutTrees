@@ -11,7 +11,7 @@ namespace DoNotAutoCutTrees
     public static class PlantUtility
     {
         /// <summary>
-        /// Alternative function of the orginal function PawnWillingtoCutPlant_Job from the game
+        /// Alternative function of the original function PawnWillingtoCutPlant_Job from the game
         /// Adds more conditions, when a pawn won't do cutting job.
         /// </summary>
         /// <param name="plant">plant which should be cut</param>

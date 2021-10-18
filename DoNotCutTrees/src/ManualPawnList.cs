@@ -18,7 +18,7 @@ namespace DoNotAutoCutTrees
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualPawnList" /> class.
-        /// (requiered Constructor)
+        /// (required Constructor)
         /// </summary>
         /// <param name="game">The game.</param>
         public ManualPawnList(Game game)
@@ -27,7 +27,7 @@ namespace DoNotAutoCutTrees
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualPawnList" /> class.
-        /// (requiered Constructor)
+        /// (required Constructor)
         /// </summary>
         public ManualPawnList()
         {

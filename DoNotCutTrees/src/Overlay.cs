@@ -123,13 +123,24 @@ namespace DoNotAutoCutTrees
             /// Postfix to add the ManualPawnList Gizmo if the ManualPawnList setting is true and the pawn has a tree cutting debuff
             /// </summary>
             /// <param name="__result">The result from the original function</param>
-            /// <param name="__instance">The Pawn instance from the original function</param>
+            /// <param name="__instance">The pawn instance from the original function</param>
+            /// <remarks>
+            /// Don't show Gizmo when on worldview, setting ManualPawnList is false, is not humanlike, no TreeMoodDebuff or this pawn is already included in another setting.
+            /// </remarks>
             public static void Postfix(ref IEnumerable<Gizmo> __result, Pawn __instance)
             {
                 if (RimWorld.Planet.WorldRendererUtility.WorldRenderedNow) return;
 
-                if (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && PlantUtility.CheckTreeMoodDebuff(__instance))
+                if (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && __instance.RaceProps.Humanlike && PlantUtility.CheckTreeMoodDebuff(__instance)) 
                 {
+                    if (Settings.Get().DoNotAutoCutTreesGeneral ||
+                       (Settings.Get().DoNotAutoCutTreesIdeoIsColonist && __instance.IsFreeColonist && (__instance.HomeFaction == Faction.OfPlayer)) ||
+                       (Settings.Get().DoNotAutoCutTreesIdeoIsSlave && __instance.IsSlaveOfColony)  ||
+                       (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && __instance.IsFreeColonist && (__instance.HomeFaction != Faction.OfPlayer)) ||
+                       (Settings.Get().DoNotAutoCutTreesIdeoIsPrisoner && __instance.IsPrisonerOfColony))
+                    {
+                        return;
+                    }
                     List<Gizmo> result = __result.ToList();
                     result.Add(GetManualPawnList.GetGameComponentManualPawnList(Current.Game).GetGizmo(__instance));
                     __result = result;

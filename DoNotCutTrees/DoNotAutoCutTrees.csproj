@@ -138,7 +138,7 @@
 		Copy all Files in OutputFolder and Rename About.xml Target
 	 -->
   <Target Name="CopyFiles" AfterTargets="CoreCompile">
-    <Message Text="Configuration is $(Configuration)" Importance="High" />
+    <Message Text="Configuration is $(Configuration) - ThisModFolder: $(ThisModFolder) - Solution: $(SolutionName)" Importance="High" />
     <Message Text="Rename $(FilesAboutChange) to About.xml and move to output folder" Importance="High" />
     <Copy SourceFiles="$(FilesAboutChange)" DestinationFiles="$(OutputAboutFolder)About.xml" SkipUnchangedFiles="true" />
     <Message Text="Copy none compile files to target directory" Importance="High" />

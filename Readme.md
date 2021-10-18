@@ -37,6 +37,7 @@ When one of your slaves gets a mood debuff from cutting trees
   -> Nobody will automatically cut trees.  
 5. **ManualList**  
   All pawns with a mood debuff from cutting trees, get a extra Gizmo toggle button to add this Pawn to a manual list.  
+  Gizmo only shows, when it has an effect. (When you have also the setting 'Colonist' activated, the Gizmo won't show on colonists)   
   When an alive pawn with mood debuff stands on this list.  
   -> Nobody will automatically cut trees.  
 6. **General**  
