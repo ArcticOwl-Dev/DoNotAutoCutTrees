@@ -3,13 +3,13 @@
 	<DoNotAutoCutTrees>DoNotAutoCutTrees</DoNotAutoCutTrees>
 	<SettingLabel>Select the groups of pawns, which should be supervised. If any of this pawns get a mood debuff from there ideo by cutting trees, all pawns won't automatically cut trees in growing zones and by building structures and roofing</SettingLabel>
 	<SettingIdeoIsColonist>Colonists</SettingIdeoIsColonist>
-	<SettingIdeoIsColonistDesc>Do not cut trees if any colonist get a mood debuff from cutting trees</SettingIdeoIsColonistDesc>
+	<SettingIdeoIsColonistDesc>Do not cut trees if any colonist of your colony get a mood debuff from cutting trees</SettingIdeoIsColonistDesc>
 	<SettingIdeoIsSlave>Slaves</SettingIdeoIsSlave>
-	<SettingIdeoIsSlaveDesc>Do not cut trees if any slave get a mood debuff from cutting trees</SettingIdeoIsSlaveDesc>
+	<SettingIdeoIsSlaveDesc>Do not cut trees if any slave of your colony get a mood debuff from cutting trees</SettingIdeoIsSlaveDesc>
 	<SettingIdeoIsGuest>Guests</SettingIdeoIsGuest>
 	<SettingIdeoIsGuestDesc>Colonist, which joins your colony temporary by a quest</SettingIdeoIsGuestDesc>
 	<SettingIdeoIsPrisoner>Prisoners</SettingIdeoIsPrisoner>
-	<SettingIdeoIsPrisonerDesc>Do not cut trees if any prisoner get a mood debuff from cutting trees</SettingIdeoIsPrisonerDesc>
+	<SettingIdeoIsPrisonerDesc>Do not cut trees if any prisoner of your colony get a mood debuff from cutting trees</SettingIdeoIsPrisonerDesc>
 	<SettingManualPawnListShort>ManualList</SettingManualPawnListShort>
 	<SettingManualPawnList>Manual Pawn List</SettingManualPawnList>
 	<SettingManualPawnListDesc>This setting adds a GIZMO button to every pawn with a ideo with a mood debuff by cutting trees. This setting only expands the other settings. For complete manual control deactivate the above settings.(IsColonist, IsSlave, IsGuest and IsPrisoner)</SettingManualPawnListDesc>
@@ -22,4 +22,5 @@
 	<ManualPawnListGizmoDesc>This setting only expands the other settings. For complete manual control deactivate the other settings.(IsColonist, IsSlave, IsGuest, IsPrisoner)</ManualPawnListGizmoDesc>
 	<ManualPawnList>Manual Pawn List</ManualPawnList>
 	<ManualPawnListClear>Clear Manual Pawn List</ManualPawnListClear>
+	<DoNotAutoCutTreesSettings>DoNotAutoCutTrees settings</DoNotAutoCutTreesSettings>
 </LanguageData>

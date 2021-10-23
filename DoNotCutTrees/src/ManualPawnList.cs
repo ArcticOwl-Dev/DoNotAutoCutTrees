@@ -87,12 +87,12 @@ namespace DoNotAutoCutTrees
         }
         /// <summary>
         /// Exposes the data.
-        /// Override function from game to save the mod data
+        /// Override virtual function from GameComponents to save the mod data
         /// </summary>
         public override void ExposeData()
         {
             this.RemoveIrrelevantPawns();
-            Scribe_Collections.Look<Pawn>(ref PawnList, "PawnList", LookMode.Value);
+            Scribe_Collections.Look<Pawn>(ref PawnList, "PawnList", LookMode.Deep);
         }
         /// <summary>Converts PawnList to string.</summary>
         /// <returns>A <see cref="System.String" /> of all pawn names in the PawnList.</returns>
@@ -126,6 +126,7 @@ namespace DoNotAutoCutTrees
             };
             return command_toggle;
         }
+        /// <summary>Removes the irrelevant pawns. (Dead, despawned and pawns with no mood debuff from tree cutting anymore</summary>
         public void RemoveIrrelevantPawns()
         {
             IEnumerable<Pawn> AllAlivePawnsWithTreeMoodDebuff = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive.Where(pawn => pawn.RaceProps.Humanlike && PlantUtility.CheckTreeMoodDebuff(pawn));

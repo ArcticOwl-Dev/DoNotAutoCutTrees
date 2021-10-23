@@ -18,7 +18,8 @@ namespace DoNotAutoCutTrees
         /// <param name="P">pawn which should do the cutting</param>
         /// <returns> <c>true</c> when the plant should not be cut. <c>false</c> when the plant can be cut</returns>
         /// <remarks>
-        /// The condition 'isTree' and 'treeLoversCareIfChopped' is taken over from the original function. <br />Then the function checks if at least one Setting is true and any pawn in the corresponding group gets a TreeMoodDebuff
+        /// The condition 'isTree' and 'treeLoversCareIfChopped' is taken over from the original function. <br />
+        /// Then the function checks if at least one Setting is true and any pawn in the corresponding group gets a TreeMoodDebuff
         /// </remarks>
         public static bool PawnWillingtoCutPlant_Job(Thing plant, Pawn P)
         {
@@ -26,11 +27,11 @@ namespace DoNotAutoCutTrees
             IEnumerable<Pawn> AllAlivePawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive.Where(pawn => pawn.RaceProps.Humanlike);
             if (plant.def.plant.IsTree && plant.def.plant.treeLoversCareIfChopped && (
                 (Settings.Get().DoNotAutoCutTreesGeneral) ||
-                (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && AllAlivePawns.Any(pawn => CheckTreeMoodDebuff(pawn) && GetManualPawnList.GetGameComponentManualPawnList(Current.Game).IsInList(pawn))) ||
                 (Settings.Get().DoNotAutoCutTreesIdeoIsColonist && AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction == Faction.OfPlayer) && CheckTreeMoodDebuff(pawn))) ||
                 (Settings.Get().DoNotAutoCutTreesIdeoIsSlave && AllAlivePawns.Any(pawn => pawn.IsSlaveOfColony && CheckTreeMoodDebuff(pawn))) ||
-                (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction != Faction.OfPlayer) && CheckTreeMoodDebuff(pawn))) ||
-                (Settings.Get().DoNotAutoCutTreesIdeoIsPrisoner && AllAlivePawns.Any(pawn => pawn.IsPrisonerOfColony && CheckTreeMoodDebuff(pawn)))))
+                (Settings.Get().DoNotAutoCutTreesIdeoIsPrisoner && AllAlivePawns.Any(pawn => pawn.IsPrisonerOfColony && CheckTreeMoodDebuff(pawn))) ||
+                (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction != Faction.OfPlayer) && !pawn.IsSlaveOfColony && CheckTreeMoodDebuff(pawn))) ||
+                (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && AllAlivePawns.Any(pawn => CheckTreeMoodDebuff(pawn) && GetManualPawnList.GetGameComponentManualPawnList(Current.Game).IsInList(pawn)))))
             {
                 return false;
 

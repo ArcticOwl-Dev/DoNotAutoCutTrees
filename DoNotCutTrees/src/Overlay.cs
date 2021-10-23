@@ -40,7 +40,7 @@ namespace DoNotAutoCutTrees
 #endif
             if (Settings.Get().ShowQuickSettingButton)
             {
-                if (row.ButtonIcon(LoadStartup_DoNotAutoCutTrees.DoNotAutoCutTreesIcon, "SelectCleaningArea".Translate(), null, null, null, true, -1f))
+                if (row.ButtonIcon(LoadStartup_DoNotAutoCutTrees.DoNotAutoCutTreesIcon, "DoNotAutoCutTreesSettings".Translate(), null, null, null, true, -1f))
                 {
                     PlaySettingsPatch.ShowFloatingMenuFunction();
                 }
@@ -136,8 +136,9 @@ namespace DoNotAutoCutTrees
                     if (Settings.Get().DoNotAutoCutTreesGeneral ||
                        (Settings.Get().DoNotAutoCutTreesIdeoIsColonist && __instance.IsFreeColonist && (__instance.HomeFaction == Faction.OfPlayer)) ||
                        (Settings.Get().DoNotAutoCutTreesIdeoIsSlave && __instance.IsSlaveOfColony)  ||
-                       (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && __instance.IsFreeColonist && (__instance.HomeFaction != Faction.OfPlayer)) ||
-                       (Settings.Get().DoNotAutoCutTreesIdeoIsPrisoner && __instance.IsPrisonerOfColony))
+                       (Settings.Get().DoNotAutoCutTreesIdeoIsPrisoner && __instance.IsPrisonerOfColony) ||
+                       (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && __instance.IsFreeColonist && (__instance.HomeFaction != Faction.OfPlayer) && !__instance.IsSlaveOfColony))
+                       
                     {
                         return;
                     }
@@ -184,7 +185,7 @@ namespace DoNotAutoCutTrees
                     //}
 
                 }
-                Log.Message("-> SetColonist: " + (P.IsFreeColonist && (P.HomeFaction == Faction.OfPlayer)) + " SetGuest: " + (P.IsFreeColonist && (P.HomeFaction != Faction.OfPlayer)));
+                Log.Message("-> SetColonist: " + (P.IsFreeColonist && (P.HomeFaction == Faction.OfPlayer)) + " SetGuest: " + (P.IsFreeColonist && (P.HomeFaction != Faction.OfPlayer) && !P.IsSlaveOfColony));
 
             }
 
@@ -192,8 +193,9 @@ namespace DoNotAutoCutTrees
             Log.Message("Any Pawn in ManualPawnList         : " + AllAlivePawns.Any(pawn => PlantUtility.CheckTreeMoodDebuff(pawn) && GetManualPawnList.GetGameComponentManualPawnList(Current.Game).IsInList(pawn)));
             Log.Message("Any Colonist with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction == Faction.OfPlayer) && PlantUtility.CheckTreeMoodDebuff(pawn)));
             Log.Message("Any Slave    with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsSlaveOfColony && PlantUtility.CheckTreeMoodDebuff(pawn)));
-            Log.Message("Any Guest    with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction != Faction.OfPlayer) && PlantUtility.CheckTreeMoodDebuff(pawn)));
             Log.Message("Any Prisoner with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsPrisonerOfColony && PlantUtility.CheckTreeMoodDebuff(pawn)));
+            Log.Message("Any Guest    with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction != Faction.OfPlayer) && !pawn.IsSlaveOfColony && PlantUtility.CheckTreeMoodDebuff(pawn)));
+
             Log.Message("----------------------------------------------");
             Log.Message("ManualPawnList: " + GetManualPawnList.GetGameComponentManualPawnList(Current.Game).ToString());
         }
