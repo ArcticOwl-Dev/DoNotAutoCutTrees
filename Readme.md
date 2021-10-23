@@ -9,7 +9,8 @@ DoNotAutoCutTrees - RimWorld Mod
 
 
 > #### How to download the mod?
-> :point_right:  https://github.com/AllenCaine/DoNotAutoCutTrees/releases
+> 👉  https://github.com/AllenCaine/DoNotAutoCutTrees/releases
+> 👉  https://steamcommunity.com/sharedfiles/filedetails/?id=2635266578 
 
 ## Description
 
