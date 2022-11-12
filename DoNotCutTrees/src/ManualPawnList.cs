@@ -116,7 +116,6 @@ namespace DoNotAutoCutTrees
                 defaultDesc = "ManualPawnListGizmoDesc".Translate(),
                 icon = PlaySettingsPatch.LoadStartup_DoNotAutoCutTrees.DoNotAutoCutTreesIcon,
                 hotKey = KeyBindingDefOf.Designator_Deconstruct,
-                order = 30f,
                 isActive = (() => this.IsInList(pawn)),
                 toggleAction = delegate()
                 {
