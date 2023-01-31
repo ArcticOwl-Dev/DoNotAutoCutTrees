@@ -51,7 +51,7 @@ namespace DoNotAutoCutTrees
         /// </remarks>
         public static bool CheckTreeMoodDebuff(Pawn pawn)
         {
-            return (pawn.Ideo.WarnPlayerOnDesignateChopTree || pawn.Ideo.PreceptsListForReading.Any(percept => percept.def.defName == "Trees_Desired"));
+            return (pawn.Ideo != null) && (pawn.Ideo.WarnPlayerOnDesignateChopTree || pawn.Ideo.PreceptsListForReading.Any(percept => percept.def.defName == "Trees_Desired"));
         }
 
 
