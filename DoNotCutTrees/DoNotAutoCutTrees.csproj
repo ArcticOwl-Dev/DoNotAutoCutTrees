@@ -45,7 +45,7 @@
 	-->
   <PropertyGroup>
     <!-- Select Output Version -->
-    <OutputVersion>1.4</OutputVersion>
+    <OutputVersion>1.5</OutputVersion>
     <OutputVersionFolder>$(ThisModFolder)$(OutputVersion)\</OutputVersionFolder>
     <OutputPath>$(OutputVersionFolder)Assemblies\</OutputPath>
     <OutputAboutFolder>$(ThisModFolder)About\</OutputAboutFolder>
