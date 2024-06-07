@@ -24,7 +24,9 @@ namespace DoNotAutoCutTrees
         public bool DoNotAutoCutTreesIdeoIsSlave = true;
         public bool DoNotAutoCutTreesIdeoIsGuest = true;
         public bool DoNotAutoCutTreesIdeoIsPrisoner = true;
- 
+
+        public bool DoNotAutoCutTreesAutoExtract = false;
+
         /// <summary>
         /// The part that writes our settings to file. Note that saving is by ref.
         /// </summary>
@@ -39,6 +41,8 @@ namespace DoNotAutoCutTrees
             Scribe_Values.Look(ref DoNotAutoCutTreesIdeoIsSlave, "DoNotAutoCutTreesIdeoIsSlave");
             Scribe_Values.Look(ref DoNotAutoCutTreesIdeoIsGuest, "DoNotAutoCutTreeIdeoIsGuest");
             Scribe_Values.Look(ref DoNotAutoCutTreesIdeoIsPrisoner, "DoNotAutoCutTreeIdeoIsPrisoner");
+
+            Scribe_Values.Look(ref DoNotAutoCutTreesAutoExtract, "DoNotAutoCutTreesAutoExtract");
             base.ExposeData();
         }
 
@@ -76,6 +80,8 @@ namespace DoNotAutoCutTrees
             listingStandard.Gap();
             listingStandard.CheckboxLabeled("SettingGeneral".Translate(), ref DoNotAutoCutTreesGeneral, "SettingGeneralDesc".Translate());
             listingStandard.CheckboxLabeled("ShowQuickSettingButton".Translate(), ref ShowQuickSettingButton, "ShowQuickSettingButtonDesc".Translate());
+            listingStandard.Gap();
+            listingStandard.CheckboxLabeled("SettingAutoExtract".Translate(), ref DoNotAutoCutTreesAutoExtract, "SettingAutoExtractDesc".Translate());
             listingStandard.End();
         }
 

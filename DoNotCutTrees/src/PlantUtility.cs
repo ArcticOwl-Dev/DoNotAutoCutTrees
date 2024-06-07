@@ -33,6 +33,10 @@ namespace DoNotAutoCutTrees
                 (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction != Faction.OfPlayer) && !pawn.IsSlaveOfColony && CheckTreeMoodDebuff(pawn))) ||
                 (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && AllAlivePawns.Any(pawn => CheckTreeMoodDebuff(pawn) && GetManualPawnList.GetGameComponentManualPawnList(Current.Game).IsInList(pawn)))))
             {
+                if (Settings.Get().DoNotAutoCutTreesAutoExtract && (plant.Map.designationManager.DesignationOn(plant, DesignationDefOf.ExtractTree) == null))
+                {
+                    plant.Map.designationManager.AddDesignation(new Designation(plant, DesignationDefOf.ExtractTree));
+                }
                 return false;
 
             }

@@ -23,4 +23,6 @@
 	<ManualPawnList>Manual Pawn List</ManualPawnList>
 	<ManualPawnListClear>Clear Manual Pawn List</ManualPawnListClear>
 	<DoNotAutoCutTreesSettings>DoNotAutoCutTrees settings</DoNotAutoCutTreesSettings>
+	<SettingAutoExtract>Auto extract trees</SettingAutoExtract>
+	<SettingAutoExtractDesc>Automatically extract trees when they obstruct tasks like building or sowing</SettingAutoExtractDesc>
 </LanguageData>
