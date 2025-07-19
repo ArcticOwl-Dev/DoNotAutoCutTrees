@@ -129,16 +129,16 @@ namespace DoNotAutoCutTrees
             /// </remarks>
             public static void Postfix(ref IEnumerable<Gizmo> __result, Pawn __instance)
             {
-                if (RimWorld.Planet.WorldRendererUtility.WorldRenderedNow) return;
+                if (RimWorld.Planet.WorldRendererUtility.WorldRendered) return;
 
-                if (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && __instance.RaceProps.Humanlike && PlantUtility.CheckTreeMoodDebuff(__instance)) 
+                if (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && __instance.RaceProps.Humanlike && PlantUtility.CheckTreeMoodDebuff(__instance))
                 {
                     if (Settings.Get().DoNotAutoCutTreesGeneral ||
                        (Settings.Get().DoNotAutoCutTreesIdeoIsColonist && __instance.IsFreeColonist && (__instance.HomeFaction == Faction.OfPlayer)) ||
-                       (Settings.Get().DoNotAutoCutTreesIdeoIsSlave && __instance.IsSlaveOfColony)  ||
+                       (Settings.Get().DoNotAutoCutTreesIdeoIsSlave && __instance.IsSlaveOfColony) ||
                        (Settings.Get().DoNotAutoCutTreesIdeoIsPrisoner && __instance.IsPrisonerOfColony) ||
                        (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && __instance.IsFreeColonist && (__instance.HomeFaction != Faction.OfPlayer) && !__instance.IsSlaveOfColony))
-                       
+
                     {
                         return;
                     }
@@ -161,13 +161,12 @@ namespace DoNotAutoCutTrees
         public static void DebugFunction()
         {
 
-            List<Pawn> AllAlivePawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive.Where(pawn => pawn.RaceProps.Humanlike).ToList();
-            Log.Message("-------------------");
+            List<Pawn> AllAlivePawns = PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive.Where(pawn => pawn.RaceProps.Humanlike).ToList();
+            Log.Message("--------------------------------------------------------------------------------------------");
             foreach (Pawn P in AllAlivePawns)
             {
                 Boolean HasHostFaction = false;
                 if (P.guest.HostFaction != null) HasHostFaction = true;
-                Log.Message("  ");
                 Log.Message(P.ToString());
                 Log.Message("-> IsFreeColonist: " + P.IsFreeColonist + " - HomeFaction: " + P.HomeFaction + " - BaseFaction: " + P.Faction);
                 Log.Message("-> IsSlaveOfColony:    " + P.IsSlaveOfColony + " - IsPrisonerOfColony:  " + P.IsPrisonerOfColony + " - HasHostFaction: " + HasHostFaction);
@@ -178,17 +177,12 @@ namespace DoNotAutoCutTrees
                 }
                 if (P.Ideo != null)
                 {
-                    Log.Message("-> IdeoName: " + P.Ideo.name + " - IdeoWarnTree: " + P.Ideo.WarnPlayerOnDesignateChopTree);
-                    //foreach (Precept precept in P.Ideo.PreceptsListForReading)
-                    //{
-                    //	Log.Message("--> PreceptList: " + precept.Label + " - " + precept.def.defName);
-                    //}
-
+                    Log.Message("-> IdeoName: " + P.Ideo.name + " - IdeoWarnTree: " + PlantUtility.CheckTreeMoodDebuff(P));
                 }
                 Log.Message("-> SetColonist: " + (P.IsFreeColonist && (P.HomeFaction == Faction.OfPlayer)) + " SetGuest: " + (P.IsFreeColonist && (P.HomeFaction != Faction.OfPlayer) && !P.IsSlaveOfColony));
-
+                Log.Message(" ");
             }
-
+            Log.Message("--------------------------------------------------------------------------------------------");
             Log.Message("Always DoNotAutoCutTrees: " + Settings.Get().DoNotAutoCutTreesGeneral);
             Log.Message("Any Pawn in ManualPawnList         : " + AllAlivePawns.Any(pawn => PlantUtility.CheckTreeMoodDebuff(pawn) && GetManualPawnList.GetGameComponentManualPawnList(Current.Game).IsInList(pawn)));
             Log.Message("Any Colonist with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction == Faction.OfPlayer) && PlantUtility.CheckTreeMoodDebuff(pawn)));
@@ -196,8 +190,11 @@ namespace DoNotAutoCutTrees
             Log.Message("Any Prisoner with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsPrisonerOfColony && PlantUtility.CheckTreeMoodDebuff(pawn)));
             Log.Message("Any Guest    with Ideo WarnTreeChop: " + AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction != Faction.OfPlayer) && !pawn.IsSlaveOfColony && PlantUtility.CheckTreeMoodDebuff(pawn)));
 
-            Log.Message("----------------------------------------------");
+            Log.Message("--------------------------------------------------------------------------------------------");
             Log.Message("ManualPawnList: " + GetManualPawnList.GetGameComponentManualPawnList(Current.Game).ToString());
+            Log.Message(" ");
+            Log.Message(" ");
+            Log.Message(" ");
         }
 
         /// <summary>

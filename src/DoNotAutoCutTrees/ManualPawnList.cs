@@ -117,7 +117,7 @@ namespace DoNotAutoCutTrees
                 icon = PlaySettingsPatch.LoadStartup_DoNotAutoCutTrees.DoNotAutoCutTreesIcon,
                 hotKey = KeyBindingDefOf.Designator_Deconstruct,
                 isActive = (() => this.IsInList(pawn)),
-                toggleAction = delegate()
+                toggleAction = delegate ()
                 {
                     this.TogglePawn(pawn);
                 },
@@ -128,7 +128,7 @@ namespace DoNotAutoCutTrees
         /// <summary>Removes the irrelevant pawns. (Dead, despawned and pawns with no mood debuff from tree cutting anymore</summary>
         public void RemoveIrrelevantPawns()
         {
-            IEnumerable<Pawn> AllAlivePawnsWithTreeMoodDebuff = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive.Where(pawn => pawn.RaceProps.Humanlike && PlantUtility.CheckTreeMoodDebuff(pawn));
+            IEnumerable<Pawn> AllAlivePawnsWithTreeMoodDebuff = PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive.Where(pawn => pawn.RaceProps.Humanlike && PlantUtility.CheckTreeMoodDebuff(pawn));
             this.PawnList = this.PawnList.Intersect(AllAlivePawnsWithTreeMoodDebuff).ToList();
         }
     }

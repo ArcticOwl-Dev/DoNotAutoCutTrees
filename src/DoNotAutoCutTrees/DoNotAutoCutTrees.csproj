@@ -10,7 +10,7 @@
     <RootNamespace>DoNotAutoCutTrees</RootNamespace>
     <AssemblyName>DoNotAutoCutTrees</AssemblyName>
     <!-- Modify [VersionPrefix] to your mod Version-->
-    <VersionPrefix>1.5.0.0</VersionPrefix>
+    <VersionPrefix>1.6.0.0</VersionPrefix>
     <!-- Do not generate pdb file on standard configuration -->
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>

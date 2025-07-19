@@ -23,8 +23,8 @@ namespace DoNotAutoCutTrees
         /// </remarks>
         public static bool PawnWillingtoCutPlant_Job(Thing plant, Pawn P)
         {
-            
-            IEnumerable<Pawn> AllAlivePawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive.Where(pawn => pawn.RaceProps.Humanlike);
+
+            IEnumerable<Pawn> AllAlivePawns = PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive.Where(pawn => pawn.RaceProps.Humanlike);
             if (plant.def.plant.IsTree && plant.def.plant.treeLoversCareIfChopped && (
                 (Settings.Get().DoNotAutoCutTreesGeneral) ||
                 (Settings.Get().DoNotAutoCutTreesIdeoIsColonist && AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction == Faction.OfPlayer) && CheckTreeMoodDebuff(pawn))) ||
@@ -33,8 +33,8 @@ namespace DoNotAutoCutTrees
                 (Settings.Get().DoNotAutoCutTreesIdeoIsGuest && AllAlivePawns.Any(pawn => pawn.IsFreeColonist && (pawn.HomeFaction != Faction.OfPlayer) && !pawn.IsSlaveOfColony && CheckTreeMoodDebuff(pawn))) ||
                 (Settings.Get().DoNotAutoCutTreesIdeoManualPawnList && AllAlivePawns.Any(pawn => CheckTreeMoodDebuff(pawn) && GetManualPawnList.GetGameComponentManualPawnList(Current.Game).IsInList(pawn)))))
             {
-                if (Settings.Get().DoNotAutoCutTreesAutoExtract && 
-                    plant.Map.designationManager.DesignationOn(plant, DesignationDefOf.ExtractTree) == null && 
+                if (Settings.Get().DoNotAutoCutTreesAutoExtract &&
+                    plant.Map.designationManager.DesignationOn(plant, DesignationDefOf.ExtractTree) == null &&
                     plant.Map.designationManager.DesignationOn(plant, DesignationDefOf.CutPlant) == null &&
                     plant.Map.designationManager.DesignationOn(plant, DesignationDefOf.HarvestPlant) == null)
                 {
