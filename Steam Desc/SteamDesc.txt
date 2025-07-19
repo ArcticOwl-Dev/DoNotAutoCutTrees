@@ -43,7 +43,7 @@ This button can be [b]disabled[/b] in the mod settings.
 
 [hr][/hr]
 
-More Infos: https://github.com/AllenCaine/DoNotAutoCutTrees
-Github Download: https://github.com/AllenCaine/DoNotAutoCutTrees/releases
+More Infos: https://github.com/ArcticOwl-Dev/DoNotAutoCutTrees
+Github Download: https://github.com/ArcticOwl-Dev/DoNotAutoCutTrees/releases
 
 Big thanks to [b]Shizen5[/b] for the basic idea and help by debugging the mod. 

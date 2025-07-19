@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>DoNotCutTrees - Dev Build</name>
-	<author>AllenCaine</author>
-	<supportedVersions>
-		<li>1.3</li>
-		<li>1.4</li>
-		<li>1.5</li>
-	</supportedVersions>
-	<modIconPath IgnoreIfNoMatchingField="True">DoNotAutoCutTreesIcon</modIconPath>
-	<packageId>AllenCaine.DoNotAutoCutTrees.Dev</packageId>
-	<description>
-BUILDTIME: EXAMPLETIMESTAMP
-
+  <name>DoNotAutoCutTrees</name>
+  <author>AllenCaine</author>
+  <supportedVersions>
+    <li>1.3</li>
+    <li>1.4</li>
+    <li>1.5</li>
+  </supportedVersions>
+  <modIconPath IgnoreIfNoMatchingField="True">DoNotAutoCutTreesIcon</modIconPath>
+  <packageId>AllenCaine.DoNotAutoCutTrees</packageId>
+  <description>
 This mod gives you the option to disable the automatic cutting of trees.
 
 In the game pawns automatically cut trees
@@ -24,23 +22,23 @@ Especially with the ideology precepts of 'Tree Cutting' and 'Tree' this is very 
 In this mod, you have six settings to disable the automatic cutting of trees:
 1. Colonist   
   When one of your colonists gets a mood debuff from cutting trees  
-  -> Nobody will automatically cut trees.
+  -&gt; Nobody will automatically cut trees.
 2. Slaves     
   When one of your Slaves of the colony gets a mood debuff from cutting trees  
-  -> Nobody will automatically cut trees.
+  -&gt; Nobody will automatically cut trees.
 3. Guest      
   When one of your guest (temporary pawns from quests) gets a mood debuff from cutting trees  
-  -> Nobody will automatically cut trees.
+  -&gt; Nobody will automatically cut trees.
 4. Prisoner 
   When one of your prisoner of the colony gets a mood debuff from cutting trees  
-  -> Nobody will automatically cut trees.
+  -&gt; Nobody will automatically cut trees.
 5. ManualList
   All pawns with a mood debuff from cutting trees,
   get a extra Gizmo toggle button to add this Pawn to a manual list.
   Gizmo only shows, when it has an effect. 
   (When you have also the setting 'Colonist' active, the Gizmo won't show on colonists)
   When an alive pawn with mood debuff stands on this list.
-  -> Nobody will automatically cut trees.
+  -&gt; Nobody will automatically cut trees.
 6. General
   When this setting is activated, all automatic cutting of trees is disabled 
   (when someone wants more micromanagement)
@@ -49,15 +47,15 @@ The mod has also a quick setting function to quickly toggle the above settings.
 In the bottom right corner of your screen you have a widget button, which opens a floating menu.
 This button can be disabled in the mod settings.
 
-More Infos: https://github.com/AllenCaine/DoNotAutoCutTrees
-	</description>
-	<url>https://github.com/AllenCaine/DoNotAutoCutTreesral </url>
-	<modDependencies>
-		<li>
-			<packageId>brrainz.harmony</packageId>
-			<displayName>Harmony</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
-			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-		</li>
-	</modDependencies>
+More Infos: https://github.com/ArcticOwl-Dev/DoNotAutoCutTrees
+  </description>
+  <url>https://github.com/ArcticOwl-Dev/DoNotAutoCutTrees</url>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
 </ModMetaData>

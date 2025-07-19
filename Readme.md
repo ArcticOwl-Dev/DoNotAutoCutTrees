@@ -10,7 +10,7 @@ DoNotAutoCutTrees - RimWorld Mod
 
 > #### How to download the mod?
 > GITHUB:  
-> 👉  https://github.com/AllenCaine/DoNotAutoCutTrees/releases  
+> 👉  https://github.com/ArcticOwl-Dev/DoNotAutoCutTrees/releases  
 >   
 > STEAM:  
 > 👉  https://steamcommunity.com/sharedfiles/filedetails/?id=2635266578 
@@ -53,10 +53,5 @@ This button can be disabled in the mod settings.
 
 --------
 
-> #### Any Questions or Improvments?
-> :point_right:  https://github.com/AllenCaine/DoNotAutoCutTrees/discussions
-
-
-
 > #### Any Issues?
-> :point_right:  https://github.com/AllenCaine/DoNotAutoCutTrees/issues
+> :point_right:  https://github.com/ArcticOwl-Dev/DoNotAutoCutTrees/issues

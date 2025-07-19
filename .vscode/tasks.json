@@ -1,0 +1,165 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "Clean"
+      ]
+    },
+    {
+      "label": "_copyDependencies",
+      "detail": "Copy dependencies to lib folder",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "CopyDependencies"
+      ]
+    },
+    {
+      "label": "_postbuild",
+      "detail": "Create 'out' folder with a complete mod folder + zip file and copy it to RimWorld mod folder",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "PostBuild"
+      ]
+    },
+    {
+      "label": "build",
+      "detail": "Copy dependencies, compile source code and create 'out' folder with a complete mod folder + zip file and copy it to RimWorld mod folder",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "Build"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "start RimWorld",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "StartRimWorld"
+      ]
+    },
+    {
+      "label": "start RimWorld -quicktest",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "StartRimWorldQuickTest"
+      ]
+    },
+    {
+      "label": "install RimWorld debug",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build_utility_debug.ps1",
+        "-Command",
+        "InstallRimWorldDebug"
+      ]
+    },
+    {
+      "label": "remove RimWorld debug",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build_utility_debug.ps1",
+        "-Command",
+        "RemoveRimWorldDebug"
+      ]
+    },
+    {
+      "label": "start dnSPY",
+      "detail": "Start dnSpy with mod DLL",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "StartDNSPY"
+      ]
+    },
+    {
+      "label": "_change mod name",
+      "detail": "Open a prompt to set the name for the mod",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "ChangeModName",
+        "-NewModName",
+        "${input:newModName}"
+      ]
+    },
+    {
+      "label": "_change RimWorld path",
+      "detail": "Open a prompt to set the path to the RimWorld installation",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "SetEnviromentVariable",
+        "-EnvName",
+        "path_RimWorld",
+        "-EnvValue",
+        "${input:SetRimWorldInstallationPath}"
+      ]
+    },
+    {
+      "label": "_change dnSpy path",
+      "detail": "Open a prompt to set the path to the dnSpy.exe",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/build_shell_selector.cmd",
+      "args": [
+        "build/build.ps1",
+        "-Command",
+        "SetEnviromentVariable",
+        "-EnvName",
+        "path_dnSpy",
+        "-EnvValue",
+        "${input:SetdnSpyPath}"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "newModName",
+      "type": "promptString",
+      "description": "Enter the new mod name (alphanumeric only, must not start with a number, no spaces or special characters)",
+    },
+    {
+      "id": "SetRimWorldInstallationPath",
+      "type": "promptString",
+      "description": "Enter the path to the RimWorld installation",
+      "default": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld"
+    },
+    {
+      "id": "SetdnSpyPath",
+      "type": "promptString",
+      "description": "Enter the path to the dnSpy.exe",
+      "default": "C:\\Program Files\\dnSpy\\dnSpy.exe"
+    }
+  ]
+}
